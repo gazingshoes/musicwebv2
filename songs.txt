@@ -1,2 +1,3 @@
-TITLE|ARTIST|DURATION|GENRE
-Konservatif|The Adams|292|Indie
+TITLE|ARTIST|DURATION|GENRE|FILEPATH
+Konservatif|The Adams|292|Indie|/Users/rajendra/Downloads/Konservatif from YouTube.mp3
+Head In The Ceiling Fan|Title Fight|214|Hardcore|/Users/rajendra/Downloads/Title Fight - Head In The Ceiling Fan.mp3

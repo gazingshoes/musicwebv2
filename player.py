@@ -1,7 +1,6 @@
 """
 Player Module
-Handles file operations
-Uses: Functions, File Handling, Exception Handling
+Handles file operations for songs.
 """
 
 def save_songs_to_file(library, filename="songs.txt"):
@@ -11,7 +10,7 @@ def save_songs_to_file(library, filename="songs.txt"):
     """
     try:
         with open(filename, 'w', encoding='utf-8') as file:
-            file.write("TITLE|ARTIST|DURATION|GENRE\n")
+            file.write("TITLE|ARTIST|DURATION|GENRE|FILEPATH\n")
             
             for song in library.all_songs.values():
                 song_data = song.to_string()
@@ -39,10 +38,15 @@ def load_songs_from_file(library, filename="songs.txt"):
             for line in lines[1:]:
                 parts = line.strip().split('|')
                 
-                if len(parts) == 4:
-                    title, artist, duration, genre = parts
-                    library.add_song(title, artist, int(duration), genre)
-                    count += 1
+                if len(parts) == 5:
+                    title, artist, duration, genre, filepath = parts
+                    try:
+                        library.add_song(title, artist, int(duration), genre, filepath)
+                        count += 1
+                    except ValueError:
+                         print(f"Skipping song with invalid duration: {title}")
+                else:
+                    print(f"Skipping malformed line: {line.strip()}")
         
         return f"✅ Loaded {count} songs from {filename}"
     
@@ -52,61 +56,3 @@ def load_songs_from_file(library, filename="songs.txt"):
         return f"❌ Error reading file data: {e}"
     except Exception as e:
         return f"❌ Unexpected error: {e}"
-
-
-def save_playlists_to_file(library, filename="playlists.txt"):
-    """
-    Save all playlists to a text file
-    Uses: File handling, Nested loops
-    """
-    try:
-        with open(filename, 'w', encoding='utf-8') as file:
-            for playlist in library.playlists:
-                file.write(f"PLAYLIST:{playlist.title}\n")
-                
-                for song in playlist.get_songs():
-                    file.write(f"  {song.title}\n")
-                
-                file.write("END_PLAYLIST\n")
-        
-        return f"✅ Saved {len(library.playlists)} playlists to {filename}"
-    
-    except Exception as e:
-        return f"❌ Error saving playlists: {e}"
-
-
-def load_playlists_from_file(library, filename="playlists.txt"):
-    """
-    Load playlists from a text file
-    Uses: File handling, String methods, Conditionals
-    """
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-            
-            current_playlist = None
-            count = 0
-            
-            for line in lines:
-                line = line.strip()
-                
-                if line.startswith("PLAYLIST:"):
-                    playlist_name = line.replace("PLAYLIST:", "")
-                    library.create_playlist(playlist_name)
-                    current_playlist = library.get_playlist(playlist_name)
-                    count += 1
-                
-                elif line == "END_PLAYLIST":
-                    current_playlist = None
-                
-                elif current_playlist and line:
-                    song = library.get_song(line)
-                    if song:
-                        current_playlist.add_song(song)
-        
-        return f"✅ Loaded {count} playlists from {filename}"
-    
-    except FileNotFoundError:
-        return f"⚠️ File '{filename}' not found. No playlists loaded."
-    except Exception as e:
-        return f"❌ Error loading playlists: {e}"
