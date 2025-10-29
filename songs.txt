@@ -1,0 +1,2 @@
+TITLE|ARTIST|DURATION|GENRE
+Konservatif|The Adams|292|Indie
