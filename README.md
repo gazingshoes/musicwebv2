@@ -12,6 +12,8 @@ There's already a provided list of songs in `songs.txt`. You can:
 
 **Important Note:** For the music playback to work, you **have** to provide the **full, correct file path** to your `.mp3` or `.wav` files when adding or editing songs. The program needs this exact path to find and play the music.
 
+**Also a very Important Note:** The provided `songs.txt` can't be actually played, if you don't have the songs and the **exact** path for them, so please do change the contents of it to your liking!
+
 Example path:
 * macOS/Linux: `/Users/your_username/Music/song_name.mp3`
 * Windows: `C:\Users\your_username\Music\song_name.mp3`
