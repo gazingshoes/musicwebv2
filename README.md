@@ -10,7 +10,7 @@ There's already a provided list of songs in `songs.txt`. You can:
 * Edit, add, or remove songs directly in `songs.txt` (before running the program).
 * Use the features in the "Library" menu while the program is running.
 
-**Important Note:** For the music playback to work, you **must** provide the **full, correct file path** to your `.mp3` or `.wav` files when adding or editing songs. The program needs this exact path to find and play the music.
+**Important Note:** For the music playback to work, you **have** to provide the **full, correct file path** to your `.mp3` or `.wav` files when adding or editing songs. The program needs this exact path to find and play the music.
 
 Example path:
 * macOS/Linux: `/Users/your_username/Music/song_name.mp3`
@@ -20,10 +20,10 @@ Example path:
 
 ## Project Files
 
-Here's a breakdown of the important files in this project:
+Breakdown of the file path:
 
 * `main.py`
-    * **Notes:** This is the main file you run to start the application. It handles the terminal menus and user interactions.
+    * **Notes:** This is the main file you run to start the application. Handles the terminal menus and user interactions.
 * `music_library.py`
     * **Notes:** Contains the "brain" of the library. Defines the `Song` class to hold song data and the `MusicLibrary` class to manage all songs (add, edit, delete, search).
 * `audio_player.py`
@@ -31,6 +31,6 @@ Here's a breakdown of the important files in this project:
 * `player.py`
     * **Notes:** Contains functions for saving the current song list to `songs.txt` and loading songs from `songs.txt` when the program starts.
 * `songs.txt`
-    * **Notes:** The data file where your song information (title, artist, duration, genre, file path) is stored.
+    * **Notes:** The data file where your song information is stored (with the format).
 * `.gitignore`
-    * **Notes:** Tells Git which files and folders (like `__pycache__`) to ignore so they aren't uploaded to GitHub.
+    * **Notes:** This is not important, it's just to prevent `__pycache__` folder to be pushed to github.
