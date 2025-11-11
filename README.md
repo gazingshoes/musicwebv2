@@ -1,4 +1,4 @@
-# Project Pemdas - Musicify
+# Project Pemdas - Musicify V1
 
 Musicify is a simple terminal music player, built entirely using Python!
 
